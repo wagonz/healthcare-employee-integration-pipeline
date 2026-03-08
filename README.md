@@ -25,6 +25,8 @@ The pipeline demonstrates:
 - Automated pipeline execution
 - Logging system for pipeline operations
 
+- <img width="1470" height="956" alt="Screenshot 2026-03-08 at 3 45 50 PM" src="https://github.com/user-attachments/assets/60cf891c-c8d6-4e19-82bf-b99ca97caff5" />
+
 ## Technologies Used
 
 - Python
