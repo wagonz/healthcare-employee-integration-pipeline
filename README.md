@@ -4,7 +4,18 @@ This project simulates a simplified enterprise HR data integration workflow simi
 
 The pipeline loads employee data, stores it in a relational database, generates reports, and exports the data into multiple formats for integration with external systems.
 
-## Features
+## Why This Project Exists
+
+This project was created to demonstrate core skills used in enterprise system integration roles such as Workday or HRIS platforms.
+
+The pipeline demonstrates:
+
+- ETL-style data processing
+- SQL database operations
+- Data format transformation (CSV → JSON/XML)
+- REST API development
+- Automated pipeline execution
+- Logging and error handling## Features
 
 - Load employee data from CSV into SQLite
 - Generate department summary reports
@@ -25,7 +36,29 @@ The pipeline loads employee data, stores it in a relational database, generates 
 
 ## Project Architecture
 CSV Data -> Database -> Reports -> Data Exports -> API
-
+          employees.csv
+                │
+                ▼
+        load_to_db.py
+                │
+                ▼
+          SQLite Database
+                │
+        ┌───────┴────────┐
+        ▼                ▼
+ generate_report     export_json
+        │                │
+        ▼                ▼
+ department_report    employees.json
+                │
+                ▼
+            export_xml
+                │
+                ▼
+            employees.xml
+                │
+                ▼
+               API
 ## How to Run the Pipeline
 
 Run the full pipeline: python3 run_pipeline.py
