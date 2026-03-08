@@ -73,10 +73,6 @@ API endpoints:
 /employees/active
 /departments/report
 
-## Purpose
-
-This project demonstrates data integration, reporting, and API development skills commonly used in enterprise HR integration environments such as Workday.
-
 ## Future Improvements
 
 - Automated scheduling
