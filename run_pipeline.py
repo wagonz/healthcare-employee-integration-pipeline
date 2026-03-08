@@ -38,6 +38,7 @@ def main():
     print("Starting Healthcare Employee Data Pipeline")
     logging.info("Pipeline started")
 
+    run_step("Validate CSV Data", "src/validate_data.py")
     run_step("Load CSV into Database", "src/load_to_db.py")
     run_step("Generate Department Report", "src/generate_report.py")
     run_step("Export JSON", "src/export_json.py")

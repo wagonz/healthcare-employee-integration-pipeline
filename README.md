@@ -15,6 +15,19 @@ The pipeline demonstrates:
 - Data format transformation (CSV → JSON/XML)
 - REST API development
 - Automated pipeline execution
+- Logging and error handling
+
+## Why This Project Exists
+
+This project was created to demonstrate core skills used in enterprise system integration roles such as Workday or HRIS platforms.
+
+The pipeline demonstrates:
+
+- ETL-style data processing
+- SQL database operations
+- Data format transformation (CSV → JSON/XML)
+- REST API development
+- Automated pipeline execution
 - Logging and error handling## Features
 
 - Load employee data from CSV into SQLite
@@ -38,29 +51,7 @@ The pipeline demonstrates:
 
 ## Project Architecture
 CSV Data -> Database -> Reports -> Data Exports -> API
-          employees.csv
-                │
-                ▼
-        load_to_db.py
-                │
-                ▼
-          SQLite Database
-                │
-        ┌───────┴────────┐
-        ▼                ▼
- generate_report     export_json
-        │                │
-        ▼                ▼
- department_report    employees.json
-                │
-                ▼
-            export_xml
-                │
-                ▼
-            employees.xml
-                │
-                ▼
-               API
+
 ## How to Run the Pipeline
 
 Run the full pipeline: python3 run_pipeline.py
@@ -74,6 +65,10 @@ API endpoints:
 /employees
 /employees/active
 /departments/report
+
+## Purpose
+
+This project demonstrates data integration, reporting, and API development skills commonly used in enterprise HR integration environments such as Workday.
 
 ## Future Improvements
 
