@@ -8,3 +8,6 @@ employees.db
 
 logs/
 output/
+
+*.log
+*.sqlite

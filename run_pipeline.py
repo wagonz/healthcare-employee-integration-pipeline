@@ -1,6 +1,10 @@
 import subprocess
 import sys
 import logging
+from pathlib import Path
+
+# Ensure logs folder exists
+Path("logs").mkdir(exist_ok=True)
 
 logging.basicConfig(
     filename="logs/pipeline.log",
@@ -21,7 +25,7 @@ def run_step(name, script):
 
     if result.returncode != 0:
 
-        logging.error(f"Error in step: {name}")
+        logging.error(f"Step failed: {name}")
         logging.error(result.stderr)
 
         print(f"Error in step: {name}")
@@ -35,7 +39,7 @@ def run_step(name, script):
 
 def main():
 
-    print("Starting Healthcare Employee Data Pipeline")
+    print("\nStarting Healthcare Employee Data Pipeline")
     logging.info("Pipeline started")
 
     run_step("Validate CSV Data", "src/validate_data.py")

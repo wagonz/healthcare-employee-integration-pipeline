@@ -1,14 +1,155 @@
 # Healthcare Employee Data Integration Pipeline
 
-This project simulates a simplified enterprise HR data integration workflow similar to those used in systems like Workday or other HRIS platforms.
+This project simulates a simplified enterprise HR data integration workflow similar to those used in systems such as Workday or other HRIS platforms.
 
-The pipeline loads employee data, stores it in a relational database, generates reports, and exports the data into multiple formats for integration with external systems.
+The pipeline loads employee data, validates the data, stores it in a relational database, generates reports, and exports the data into multiple formats for integration with external systems.
 
-## Why This Project Exists
+## Features
 
-This project was created to demonstrate core skills used in enterprise system integration roles such as Workday or HRIS platforms.
+- CSV data ingestion
+- Data validation before database loading
+- SQLite relational database storage
+- Department summary report generation
+- Data export to JSON and XML formats
+- REST API endpoints using Flask
+- Automated pipeline execution
+- Logging of pipeline operations
 
-The pipeline demonstrates:
+## Project Architecture
+
+'''
+employees.csv
+      │
+      ▼
+validate_data.py
+      │
+      ▼
+load_to_db.py
+      │
+      ▼
+SQLite Database
+      │
+ ┌────┴───────────────┐
+ ▼                    ▼
+generate_report.py   export_json.py
+ │                    │
+ ▼                    ▼
+department_report    employees.json
+      │
+      ▼
+export_xml.py
+      │
+      ▼
+employees.xml
+      │
+      ▼
+Flask API
+```
+
+## Project Structure
+
+```
+healthcare-employee-integration-pipeline
+│
+├── src
+│   ├── validate_data.py
+│   ├── load_to_db.py
+│   ├── generate_report.py
+│   ├── export_json.py
+│   ├── export_xml.py
+│   └── api.py
+│
+├── data
+│   └── employees.csv
+│
+├── logs
+│
+├── output
+│
+├── run_pipeline.py
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+## Requirements
+
+Python 3
+
+Install dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+## Running the Full Pipeline
+
+Run the automated pipeline:
+
+```
+python3 run_pipeline.py
+```
+
+The pipeline will perform the following steps:
+
+1. Validate CSV data
+2. Load employee data into the SQLite database
+3. Generate department summary report
+4. Export employee data to JSON
+5. Export employee data to XML
+
+## Running the API
+
+Start the API server:
+
+```
+python3 src/api.py
+```
+
+Available endpoints:
+
+```
+/employees
+/employees/active
+/departments/report
+```
+
+## Example Pipeline Output
+
+```
+Starting Healthcare Employee Data Pipeline
+
+Running step: Validate CSV Data
+Validation successful
+
+Running step: Load CSV into Database
+Employees data loaded successfully
+
+Running step: Generate Department Report
+Report generated
+
+Running step: Export JSON
+Export completed
+
+Running step: Export XML
+Export completed
+
+Pipeline completed successfully
+```
+
+## Logging
+
+Pipeline activity is logged to:
+
+```
+logs/pipeline.log
+```
+
+This log records pipeline steps, errors, and execution timestamps.
+
+## Purpose
+
+This project demonstrates core skills used in enterprise integration and HRIS environments:
 
 - ETL-style data processing
 - SQL database operations
@@ -17,63 +158,11 @@ The pipeline demonstrates:
 - Automated pipeline execution
 - Logging and error handling
 
-## Why This Project Exists
+## Author
+Wascar Gonzalez  
+GitHub: https://github.com/wagonz
 
-This project was created to demonstrate core skills used in enterprise system integration roles such as Workday or HRIS platforms.
 
-The pipeline demonstrates:
 
-- ETL-style data processing
-- SQL database operations
-- Data format transformation (CSV → JSON/XML)
-- REST API development
-- Automated pipeline execution
-- Logging and error handling## Features
 
-- Load employee data from CSV into SQLite
-- Generate department summary reports
-- Export employee data to JSON
-- Export employee data to XML
-- Provide API endpoints for employee data
-- Automated pipeline execution
-- Logging system for pipeline operations
-
-- <img width="1470" height="956" alt="Screenshot 2026-03-08 at 3 45 50 PM" src="https://github.com/user-attachments/assets/60cf891c-c8d6-4e19-82bf-b99ca97caff5" />
-
-## Technologies Used
-
-- Python
-- SQLite
-- Flask
-- CSV / JSON / XML
-- REST API
-- Logging
-
-## Project Architecture
-CSV Data -> Database -> Reports -> Data Exports -> API
-
-## How to Run the Pipeline
-
-Run the full pipeline: python3 run_pipeline.py
-This will:
-1. Load employee data into the database
-2. Generate department report
-3. Export JSON data
-4. Export XML data
-   
-API endpoints:
-/employees
-/employees/active
-/departments/report
-
-## Purpose
-
-This project demonstrates data integration, reporting, and API development skills commonly used in enterprise HR integration environments such as Workday.
-
-## Future Improvements
-
-- Automated scheduling
-- Data validation
-- Integration with external payroll API
-- Docker containerization
 
